@@ -39,3 +39,13 @@ function closuresExample() {
 
 const printBigArr = closuresExample();
 printBigArr();
+
+// It is important to mindfully use the closures, and make sure not to use any big memory-consuming object as part of the closures. It's better to create an object as part of the returned function itself so that the functions can be collected by the garbage collector if required since no linking is left.
+
+//4.Not Not cleared Timers & Intervals : If you set up timers (using setTimeout or setInterval) and do not clear them when they are no longer needed, they can continue to run and consume memory.
+const intervalId = setInterval(() => {
+  console.log("This will run every second");
+}, 1000);
+
+// To prevent this, you should clear the interval when it is no longer needed:
+clearInterval(intervalId);
